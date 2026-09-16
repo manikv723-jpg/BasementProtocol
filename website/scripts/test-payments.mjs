@@ -201,3 +201,104 @@ await test('regional price tampering and stale INR price are rejected', async ()
   const overseas = setup({ price: () => priceForCountry('US') });
   assert.equal((await overseas.createOrder(request(validOrder))).status, 400);
 });
+
+// License delivery: the webhook that turns a captured payment into an emailed key.
+const { licenceDelivery, bigEnough } = await import('../lib/licence-delivery.ts');
+const webhookSecret = 'unit-webhook-secret';
+const captured = (payment = {}) => ({
+  event: 'payment.captured',
+  payload: { payment: { entity: { id: paymentId, order_id: orderId, amount: 999900, currency: 'INR', ...payment } } },
+});
+const signed = (body, secret = webhookSecret) => {
+  const raw = JSON.stringify(body);
+  return new Request('https://example.com/api/4ruple/razorpay-webhook', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-razorpay-signature': createHmac('sha256', secret).update(raw).digest('hex') },
+    body: raw,
+  });
+};
+function delivery(overrides = {}) {
+  const calls = [];
+  const handler = licenceDelivery({
+    settings: () => ({ secret: webhookSecret, issueUrl: 'https://licence.test/issue', adminToken: 'admin-test-value', floor: 200000 }),
+    readOrder: async () => ({ email: 'buyer@example.com' }),
+    issue: async (_url, _token, body) => { calls.push(body); return { ok: true, emailed: true }; },
+    ...overrides,
+  });
+  return { handle: (body, secret) => handler.handle(signed(body, secret)), calls };
+}
+
+await test('license delivery accepts only Razorpay-signed bodies', async () => {
+  assert.equal((await delivery().handle(captured())).status, 200);
+  assert.equal((await delivery().handle(captured(), 'wrong-secret')).status, 401);
+  const app = delivery();
+  const unsigned = new Request('https://example.com/api/4ruple/razorpay-webhook', { method: 'POST', body: '{}' });
+  assert.equal((await licenceDelivery({
+    settings: () => ({ secret: webhookSecret, issueUrl: 'https://licence.test/issue', adminToken: 'x', floor: 200000 }),
+    readOrder: async () => null,
+    issue: async () => ({ ok: true }),
+  }).handle(unsigned)).status, 401);
+  assert.equal(app.calls.length, 0);
+});
+await test('an unconfigured license service retries instead of losing a paid sale', async () => {
+  const app = delivery({ settings: () => ({ secret: webhookSecret, issueUrl: '', adminToken: '', floor: 200000 }) });
+  assert.equal((await app.handle(captured())).status, 500);
+  assert.equal(app.calls.length, 0);
+});
+await test('only captured payments issue, and other events are acknowledged', async () => {
+  for (const event of ['payment.failed', 'payment.authorized', 'subscription.charged']) {
+    const app = delivery();
+    const response = await app.handle({ ...captured(), event });
+    assert.equal(response.status, 200);
+    assert.equal((await response.json()).ignored, event);
+    assert.equal(app.calls.length, 0);
+  }
+  for (const event of ['payment.captured', 'order.paid']) {
+    const app = delivery();
+    assert.equal((await app.handle({ ...captured(), event })).status, 200);
+    assert.equal(app.calls[0].orderRef, `razorpay:${paymentId}`);
+  }
+});
+await test('the rupee floor never rejects an international payment', async () => {
+  assert.equal(bigEnough('INR', 999900, 200000), true);
+  assert.equal(bigEnough('INR', 100, 200000), false);
+  assert.equal(bigEnough('USD', 10000, 200000), true);
+  const app = delivery();
+  assert.equal((await app.handle(captured({ currency: 'USD', amount: 10000 }))).status, 200);
+  assert.equal(app.calls[0].amountPaise, null);
+  const small = delivery();
+  assert.equal((await small.handle(captured({ amount: 100 }))).status, 200);
+  assert.equal(small.calls.length, 0);
+});
+await test('the key goes to the address the buyer typed, not void@razorpay.com', async () => {
+  const app = delivery();
+  await app.handle(captured({ email: 'void@razorpay.com' }));
+  assert.equal(app.calls[0].email, 'buyer@example.com');
+  const noRecord = delivery({ readOrder: async () => null });
+  await noRecord.handle(captured({ email: 'Payer@Example.com' }));
+  assert.equal(noRecord.calls[0].email, 'payer@example.com');
+  const nothing = delivery({ readOrder: async () => null });
+  const response = await nothing.handle(captured({ email: 'void@razorpay.com' }));
+  assert.equal((await response.json()).ignored, 'no email');
+  assert.equal(nothing.calls.length, 0);
+});
+await test('a pack issues one key per seat, and a refund switches the keys off', async () => {
+  const app = delivery();
+  await app.handle(captured({ notes: { seats: '2' } }));
+  assert.equal(app.calls[0].quantity, 2);
+  assert.equal(app.calls[0].plan, 'team2');
+  const single = delivery();
+  await single.handle(captured());
+  assert.deepEqual([single.calls[0].quantity, single.calls[0].plan], [1, 'lifetime']);
+
+  const refund = delivery();
+  const response = await refund.handle({ event: 'refund.processed', payload: { refund: { entity: { payment_id: paymentId } } } });
+  assert.equal(response.status, 200);
+  assert.deepEqual(refund.calls[0], { action: 'revoke', orderRef: `razorpay:${paymentId}` });
+});
+await test('delivery failures return 500 so Razorpay tries again', async () => {
+  const failed = delivery({ issue: async () => ({ ok: false, error: 'service down' }) });
+  assert.equal((await failed.handle(captured())).status, 500);
+  const unsent = delivery({ issue: async () => ({ ok: true, emailed: false }) });
+  assert.equal((await unsent.handle(captured())).status, 500);
+});
