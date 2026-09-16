@@ -1,0 +1,150 @@
+/* Keyword landing pages (/ai-consulting, /ai-agent-development, /ai-lead-generation, /about). */
+.landing-hero {
+  padding: 92px 0 96px;
+  border-bottom: 1px solid var(--border);
+}
+.landing-hero-copy {
+  max-width: 960px;
+}
+.landing-crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--faint);
+  margin-bottom: 44px;
+}
+.landing-crumb:hover {
+  color: var(--white);
+}
+.landing-hero .eyebrow {
+  color: var(--quiet);
+  margin-bottom: 26px;
+}
+.landing-hero h1 {
+  font-size: clamp(42px, 5.8vw, 86px);
+  font-weight: 480;
+  letter-spacing: -0.06em;
+  line-height: 1.03;
+  margin: 0 0 30px;
+}
+.landing-hero h1 span {
+  color: var(--blue);
+}
+.landing-hero-copy > p {
+  max-width: 640px;
+  color: var(--quiet);
+  font-size: 18px;
+  line-height: 1.7;
+}
+.landing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0 40px;
+  border-top: 1px solid var(--border);
+}
+.landing-grid > div {
+  padding-top: 30px;
+}
+.landing-grid .mono {
+  color: var(--blue);
+  font-size: 12px;
+}
+.landing-grid h3 {
+  font-size: 24px;
+  letter-spacing: -0.035em;
+  font-weight: 450;
+  margin: 26px 0 12px;
+}
+.landing-grid p {
+  font-size: 15px;
+  color: var(--quiet);
+  line-height: 1.75;
+}
+.enterprise-faq#faq {
+  padding-top: 100px;
+}
+.landing-faq-list {
+  border-top: 1px solid var(--border);
+}
+.landing-faq-list > div {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+}
+.landing-faq-list h3 {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  margin: 0 0 10px;
+}
+.landing-faq-list p {
+  color: var(--quiet);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 620px;
+}
+.landing-related {
+  padding: 20px 0 100px;
+}
+.landing-related .eyebrow {
+  color: var(--quiet);
+  margin-bottom: 24px;
+}
+.landing-related-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.landing-related-links a {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 170px;
+  padding: 28px;
+  background: var(--ink);
+  transition: background 0.2s;
+}
+.landing-related-links a:hover {
+  background: var(--card);
+}
+.landing-related-links .mono {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--blue);
+}
+.landing-related-links span:not(.mono) {
+  color: var(--quiet);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.landing-related-links svg {
+  margin-top: auto;
+  color: var(--blue);
+}
+/* Footer now carries service links too; let the row wrap instead of overflowing. */
+.footer-links {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 12px;
+}
+@media (max-width: 900px) {
+  .footer-links {
+    justify-content: flex-start;
+  }
+  .landing-hero {
+    padding: 56px 0 64px;
+  }
+  .landing-hero-copy > p {
+    font-size: 16px;
+  }
+  .landing-hero .hero-actions {
+    flex-wrap: wrap;
+  }
+  .enterprise-faq#faq {
+    padding-top: 64px;
+  }
+}

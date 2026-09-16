@@ -1,0 +1,8 @@
+data
+.env*
+!.env.example
+.wrangler
+.openai
+.git
+*.tsbuildinfo
+_backup-*
