@@ -12,6 +12,7 @@ Built in 2026. Works in English and Hindi. Serves clients in India and internati
 - AI consulting that ends in a working system: scope one business problem, then build the agents, workflows and interfaces around it.
 - Custom AI agent development: lead generation agents, SEO agents, creative workflow agents and enquiry-to-quotation workflows.
 - AI systems for Indian SMEs: practical workflows for enquiries, quotations, order handoffs and owner visibility, with people approving what goes out.
+- End-to-end AI implementation for Indian SMEs: scope one process, build the workflow and interface, connect the tools the business already runs on (candidates agreed per scope include the WhatsApp Business API, a Tally or Zoho ledger, Google Sheets, a shared email inbox, Razorpay and Shopify), pilot it on that one process, then hand over the accounts, documentation and training. Delivery duration is agreed in writing at the end of scoping; no fixed durations are published.
 - Operating interfaces: role-specific dashboards, such as a dealer dashboard for a franchise.
 
 ## Delivered engagements (client identities confidential)
@@ -37,6 +38,7 @@ Commercial results for these engagements have not been disclosed.
 - [AI agent development](https://basementprotocol.com/ai-agent-development)
 - [AI lead generation systems](https://basementprotocol.com/ai-lead-generation)
 - [AI systems for Indian SMEs](https://basementprotocol.com/smes)
+- [AI consulting for SMEs: the full guide](https://basementprotocol.com/ai-consulting-for-smes)
 - [Enterprise AI and case studies](https://basementprotocol.com/enterprise)
 - [About](https://basementprotocol.com/about)
 - [4ruple.ai](https://basementprotocol.com/4ruple)

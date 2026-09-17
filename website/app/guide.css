@@ -1,0 +1,279 @@
+/* Long-form buyer guide (/ai-consulting-for-smes). Builds on landing.css: the
+   hero, FAQ list and related-links blocks are shared, these rules only add the
+   prose, checklist, step and question blocks the guide needs. */
+.guide-section .section-heading {
+  align-items: flex-start;
+  gap: 56px;
+}
+.guide-prose {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.guide-prose p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--quiet);
+}
+.guide-section .section-lead {
+  max-width: 420px;
+}
+.guide-grid {
+  gap: 44px 40px;
+}
+.guide-grid > div {
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+  margin-top: -1px;
+}
+
+/* What it is not, and what moves the price: two-column checklists. */
+.guide-negative,
+.guide-drivers {
+  margin-top: 54px;
+  border-top: 1px solid var(--border);
+  padding-top: 30px;
+}
+.guide-negative > .mono,
+.guide-drivers > .mono {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--blue);
+  margin-bottom: 26px;
+}
+.guide-negative ul,
+.guide-drivers ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 26px 40px;
+}
+.guide-negative li,
+.guide-drivers li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.guide-negative svg,
+.guide-drivers svg {
+  flex: none;
+  margin-top: 3px;
+}
+.guide-negative svg {
+  color: var(--faint);
+}
+.guide-drivers svg {
+  color: var(--blue);
+}
+.guide-negative li div,
+.guide-drivers li div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.guide-negative strong,
+.guide-drivers strong {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+.guide-negative span,
+.guide-drivers span {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--quiet);
+}
+
+/* The tools a scope usually touches. */
+.guide-stack-head {
+  margin-top: 60px;
+  max-width: 620px;
+}
+.guide-stack-head h3 {
+  font-size: 22px;
+  font-weight: 450;
+  letter-spacing: -0.03em;
+  margin: 0 0 12px;
+}
+.guide-stack-head p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--faint);
+}
+.guide-stack {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.guide-stack > div {
+  background: var(--ink);
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.guide-stack strong {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+.guide-stack p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--quiet);
+}
+
+/* Delivery sequence. */
+.guide-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+.guide-steps > li {
+  border-bottom: 1px solid var(--border);
+}
+.guide-steps > li > div {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 30px 0;
+}
+.guide-steps .mono {
+  color: var(--blue);
+  font-size: 12px;
+  padding-top: 6px;
+  flex: none;
+  width: 34px;
+}
+.guide-steps h3 {
+  font-size: 22px;
+  font-weight: 450;
+  letter-spacing: -0.03em;
+  margin: 0 0 10px;
+}
+.guide-steps p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--quiet);
+  max-width: 660px;
+}
+
+/* Questions to ask a partner, and the disqualifiers. */
+.guide-questions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.guide-questions > div {
+  background: var(--ink);
+  padding: 30px 28px;
+}
+.guide-questions h3 {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.45;
+  margin: 0 0 12px;
+  color: var(--white);
+}
+.guide-questions p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--quiet);
+}
+.guide-notfor h3 {
+  color: var(--white);
+}
+
+/* 4ruple pointer under the cost section. */
+.guide-cost-note {
+  margin-top: 40px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.guide-cost-note p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--quiet);
+  max-width: 680px;
+}
+
+/* Duration note under the /smes starting-point copy. */
+.sme-start .sme-start-note {
+  margin-top: 18px;
+  font-size: 15px;
+  color: var(--faint);
+}
+
+/* Guide pointers added to the home SME lane and the /smes hero. */
+.sme-home-callout .text-link,
+.sme-hero-copy .text-link {
+  margin-top: 14px;
+}
+
+@media (max-width: 900px) {
+  .guide-section .section-heading {
+    display: block;
+  }
+  .guide-section .section-heading > div:first-child {
+    margin-bottom: 26px;
+  }
+  .guide-prose,
+  .guide-section .section-lead {
+    max-width: 640px;
+  }
+  .guide-steps > li > div {
+    gap: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .guide-negative,
+  .guide-drivers {
+    margin-top: 40px;
+  }
+  .guide-stack-head {
+    margin-top: 46px;
+  }
+  .guide-stack > div,
+  .guide-questions > div {
+    padding: 24px 22px;
+  }
+  .guide-steps > li > div {
+    flex-direction: column;
+    gap: 12px;
+    padding: 26px 0;
+  }
+  .guide-steps .mono {
+    padding-top: 0;
+  }
+  .guide-steps h3 {
+    font-size: 20px;
+  }
+  .guide-cost-note {
+    padding: 24px 22px;
+  }
+}

@@ -35,6 +35,7 @@ const links = [
 const serviceLinks = [
   ['4ruple.ai', '/4ruple'],
   ['AI consulting', '/ai-consulting'],
+  ['AI consulting for SMEs', '/ai-consulting-for-smes'],
   ['AI agent development', '/ai-agent-development'],
   ['AI lead generation', '/ai-lead-generation'],
   ['About', '/about'],

@@ -73,6 +73,10 @@ export function BasementSite({ pricing }: { pricing: import('@/lib/pricing').Reg
           <p>
             Turn the work you chase every day into a process your team can run.
           </p>
+          <a className="text-link" href="/ai-consulting-for-smes">
+            What AI consulting for an SME actually involves{' '}
+            <ArrowUpRight size={16} />
+          </a>
         </div>
         <a className="btn btn-primary" href="/smes">
           Build your next system <ArrowUpRight size={17} />

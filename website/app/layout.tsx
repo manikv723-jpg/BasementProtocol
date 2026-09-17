@@ -4,6 +4,7 @@ import './globals.css';
 import './enterprise.css';
 import './smes.css';
 import './landing.css';
+import './guide.css';
 import './fouruple.css';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/seo';
 const sans = Geist({
@@ -16,8 +17,16 @@ const mono = Geist_Mono({
   subsets: ['latin'],
   display: 'swap',
 });
+// Search engine ownership checks. Set GOOGLE_SITE_VERIFICATION or BING_SITE_VERIFICATION in Vercel and the
+// meta tag appears on the next deploy; with neither set, nothing is rendered.
+const verification: Metadata['verification'] = {
+  ...(process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : {}),
+  ...(process.env.BING_SITE_VERIFICATION ? { other: { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } } : {}),
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  verification,
   title: {
     default: 'Basement Protocol | AI Consulting and Custom AI Agents in India',
     template: '%s | Basement Protocol',

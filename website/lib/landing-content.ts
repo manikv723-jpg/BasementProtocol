@@ -38,25 +38,48 @@ export const aiConsulting: LandingContent = {
     'Basement Protocol is an AI consulting company based in India. We start with one business problem, agree what a useful outcome looks like, then design and build the AI agents, workflows and interfaces your team will actually use. Not a strategy deck that sits in a drawer.',
   sections: [
     {
-      eyebrow: 'WHAT AI CONSULTING MEANS HERE',
+      eyebrow: 'HOW AN ENGAGEMENT RUNS',
       title: 'Advice is the first step, not the product.',
-      lead: 'Most AI consulting stops at a recommendation. Ours continues into the build, so the answer to “what should we do with AI?” is a system your team runs.',
+      lead: 'Most AI consulting stops at a recommendation. Ours continues into the build. A first engagement covers one process: the workflow, the integrations it needs, the interface your team uses, the approval points and the training at handover. We do not publish fixed durations, because they depend on how many tools the scope touches and how quickly access and answers arrive, so the duration is agreed in writing at the end of scoping.',
       items: [
         [
-          'Understand the work',
-          'Map the business goal, how the work happens today and where AI could genuinely help.',
+          'Scope',
+          'Walk through the process with the person who does it. Agree the workflow, the inputs, what a good output looks like, which tools get connected and who approves what. Ends with a written scope, a quote and a duration.',
         ],
         [
-          'Define one use case',
-          'Agree the first workflow, the inputs it needs and what a useful output looks like.',
+          'Build',
+          'Develop the agents, automations and interfaces named in that scope, with you seeing the work in progress rather than only at the end.',
         ],
         [
-          'Build the system',
-          'Develop the agents, automations and interfaces around that agreed scope.',
+          'Pilot on one process',
+          'Run it live on the single process it was built for, with your team using it and approving what goes out, against your real data and real exceptions.',
         ],
         [
-          'Refine in context',
-          'Review the system with the people using it and decide what improves next.',
+          'Handover and training',
+          'Train the people who use it, hand over the accounts, credentials and documentation, and agree what happens when something breaks or a model changes.',
+        ],
+      ],
+    },
+    {
+      eyebrow: 'WHAT AN ENGAGEMENT CONNECTS TO',
+      title: 'The tools your business already runs on.',
+      lead: 'Candidates, not a fixed stack. Which of these a build touches is agreed during scoping, based on what each tool allows and the access you can give.',
+      items: [
+        [
+          'WhatsApp Business API',
+          'Business messaging under Meta’s template, opt-in and messaging-window rules. Not a personal handset, and not an unofficial automation.',
+        ],
+        [
+          'Tally or Zoho',
+          'Where the ledger, the item master and often the rate list already live. Usually read through an export or an official connector rather than written to directly.',
+        ],
+        [
+          'Google Sheets and a shared inbox',
+          'The real system of record in a lot of businesses. Often the fastest place to keep a shared list and a queue your team already trusts.',
+        ],
+        [
+          'Razorpay and Shopify',
+          'Payment links, payment status and online order data, so a quotation, an invoice and a paid order can be one record instead of three.',
         ],
       ],
     },
@@ -118,8 +141,24 @@ export const aiConsulting: LandingContent = {
       a: 'No. Start with the business problem and how the work happens today. Choosing the models and tools is part of our job.',
     },
     {
+      q: 'What does a first engagement include?',
+      a: 'One process, scoped in writing: the workflow, the integrations it needs, the interface your team uses, the points where a person approves what goes out, and training at handover. Delivery runs in four stages, scope, build, pilot on that one process, then handover and training, so the first thing you judge is a system running on your real work.',
+    },
+    {
+      q: 'How long does an AI consulting engagement take?',
+      a: 'We don’t publish fixed durations. How long a build takes depends on how many tools the scope touches and how quickly access and answers come from your side, so the duration is agreed in writing at the end of scoping rather than guessed before it. Keeping a first engagement to one process is what keeps it reviewable.',
+    },
+    {
+      q: 'Which tools can you connect to?',
+      a: 'The usual candidates are the tools a business already runs on: the WhatsApp Business API for policy-compliant business messaging, a Tally or Zoho ledger, Google Sheets, a shared email inbox, Razorpay for payment links and status, and Shopify for online order data. What is possible depends on what each tool allows and the access you can give, so it is confirmed during scoping.',
+    },
+    {
+      q: 'Who owns the system after handover?',
+      a: 'You do. Handover includes the accounts, the credentials and the documentation needed to run the system, plus training for the people using it. You should finish an engagement able to operate what was built without us. It is worth asking any implementation partner this before you sign.',
+    },
+    {
       q: 'How much does AI consulting cost?',
-      a: 'It depends on scope. The workflow, the interfaces and the integrations determine the work involved, so we don’t sell fixed packages. A 30-minute meeting is enough to discuss your needs and a suitable proposal.',
+      a: 'It depends on scope. We don’t publish a rate card and we don’t sell fixed packages. Each engagement is quoted per project after the first conversation, and the number moves with how many processes are in scope, how many tools get connected, whether a custom interface is needed and how clean your existing data is. A 30-minute meeting is enough to scope it.',
     },
     {
       q: 'Do you work with companies outside India?',
@@ -132,14 +171,14 @@ export const aiConsulting: LandingContent = {
   ],
   related: [
     [
+      'AI consulting for SMEs',
+      '/ai-consulting-for-smes',
+      'The full guide: where SMEs lose time, what a build connects to, and what to ask any partner.',
+    ],
+    [
       'AI agent development',
       '/ai-agent-development',
       'Custom agents for lead generation, search, creative work and quotations.',
-    ],
-    [
-      'AI lead generation',
-      '/ai-lead-generation',
-      'The system we’ve built for solar and real estate businesses.',
     ],
     [
       'AI for Indian SMEs',
