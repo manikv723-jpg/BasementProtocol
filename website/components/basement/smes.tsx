@@ -22,6 +22,7 @@ import {
 import { SiteFrame, BookingCTA } from './frame';
 import { Reveal } from './previews';
 import { Threshold } from './brand';
+import { smeFaqs } from '@/lib/sme-guide-content';
 const examples = [
   {
     id: 'sales',
@@ -153,6 +154,10 @@ export function SmesPage() {
           <span className="sme-hero-note">
             Start with one process that needs to work better.
           </span>
+          <a className="text-link" href="/ai-consulting-for-smes">
+            Read the full guide to AI consulting for SMEs{' '}
+            <ArrowUpRight size={16} />
+          </a>
         </Reveal>
         <Reveal className="sme-workboard" delay={0.1}>
           <div className="sme-board-top">
@@ -206,7 +211,7 @@ export function SmesPage() {
           <p>
             <strong>SMEs grow with systems.</strong> Clear processes. Clear
             responsibilities. Clear next steps. AI makes more of those systems
-            possible—and we help you build them.
+            possible, and we help you build them.
           </p>
         </div>
       </Reveal>
@@ -280,6 +285,47 @@ export function SmesPage() {
             </Reveal>
           ))}
         </div>
+        <Reveal className="guide-stack-head">
+          <h3>The tools a system usually connects to</h3>
+          <p>
+            Candidates, not a fixed stack. Which of these a build connects to is
+            agreed with you during scoping, based on the access and permissions
+            available in your own accounts.
+          </p>
+        </Reveal>
+        <div className="guide-stack">
+          {[
+            [
+              'WhatsApp Business API',
+              'Business messaging under Meta’s template, opt-in and messaging-window rules. Not a personal handset, and not an unofficial automation.',
+            ],
+            [
+              'Tally or Zoho',
+              'Where the ledger, the item master and often the rate list already live. Usually read through an export or an official connector.',
+            ],
+            [
+              'Google Sheets',
+              'The real system of record in a lot of SMEs. Often the fastest place to keep a shared list your team already trusts.',
+            ],
+            [
+              'A shared email inbox',
+              'A queue whether or not it is treated as one. Giving every message an owner and a next action is often the first useful change.',
+            ],
+            [
+              'Razorpay',
+              'Payment links and payment status, so a quotation, an invoice and a paid order are one record instead of three.',
+            ],
+            [
+              'Shopify',
+              'For SMEs selling online, the order and customer data a follow-up or an operations handoff can be built on.',
+            ],
+          ].map(([title, desc]) => (
+            <Reveal key={title}>
+              <strong>{title}</strong>
+              <p>{desc}</p>
+            </Reveal>
+          ))}
+        </div>
       </section>
       <section className="sme-start section">
         <Reveal>
@@ -294,22 +340,35 @@ export function SmesPage() {
           <p>
             You do not need an AI strategy deck to start a conversation. Bring
             an example of the work: an enquiry, a quotation, an order handoff or
-            a recurring status update.
+            a recurring status update. A first engagement covers one process:
+            the workflow, the integrations it needs, the interface your team
+            uses, the points where a person approves what goes out, and the
+            training at handover.
+          </p>
+          <p className="sme-start-note">
+            We do not publish fixed durations. How long a build takes depends on
+            how many tools the scope touches and how quickly access and answers
+            come from your side, so the duration is agreed in writing at the end
+            of scoping rather than guessed before it.
           </p>
         </Reveal>
         <div className="sme-start-steps">
           {[
             [
-              'Walk through it',
-              'Show us how the process works today and where it gets stuck.',
+              'Scope',
+              'Walk through the process with the person who does it. Agree the workflow, the inputs, the integrations and who approves what. Ends with a written scope, a quote and a duration.',
             ],
             [
-              'Scope one system',
-              'Agree the workflow, the inputs and what the first version needs to do.',
+              'Build',
+              'Develop the workflow, the interface and the integrations named in the scope, with you seeing it in progress rather than only at the end.',
             ],
             [
-              'Build and review',
-              'Put the agreed system together and review it with the people using it.',
+              'Pilot on one process',
+              'Run it live on the single process it was built for, with your team using it and approving what goes out.',
+            ],
+            [
+              'Handover and training',
+              'Train the people who use it, hand over the accounts, credentials and documentation, and agree what happens when something breaks.',
             ],
           ].map(([title, desc], i) => (
             <Reveal key={title}>
@@ -345,44 +404,17 @@ export function SmesPage() {
           <h2>Practical questions.</h2>
         </div>
         <Accordion className="faq-items">
-          <AccordionItem value="size">
-            <AccordionTrigger>Can we start small?</AccordionTrigger>
-            <AccordionContent>
-              Yes. Start with one recurring workflow. We can use the first
-              conversation to understand the problem and discuss a focused
-              scope.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="tools">
-            <AccordionTrigger>
-              We use WhatsApp and spreadsheets. Is that a starting point?
-            </AccordionTrigger>
-            <AccordionContent>
-              Yes—show us how the work moves between them. We will discuss what
-              can be organised or connected, based on available access and
-              permissions. Specific integrations are agreed as part of the
-              scope.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="knowledge">
-            <AccordionTrigger>
-              Does our team need to learn AI first?
-            </AccordionTrigger>
-            <AccordionContent>
-              You can begin with your knowledge of the business. The
-              conversation starts with the process your team already understands
-              and the work you want to improve.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="price">
-            <AccordionTrigger>How much will it cost?</AccordionTrigger>
-            <AccordionContent>
-              Scope comes first. The workflow, interfaces and integrations
-              determine the work involved. Book a meeting so we can discuss your
-              needs and a suitable proposal.
-            </AccordionContent>
-          </AccordionItem>
+          {smeFaqs.map((f, i) => (
+            <AccordionItem value={`q${i}`} key={f.q}>
+              <AccordionTrigger>{f.q}</AccordionTrigger>
+              <AccordionContent>{f.a}</AccordionContent>
+            </AccordionItem>
+          ))}
         </Accordion>
+        <a className="text-link sme-faq-more" href="/ai-consulting-for-smes">
+          More questions answered in the full guide{' '}
+          <ArrowUpRight size={17} />
+        </a>
       </section>
       <Reveal className="sme-final">
         <span className="eyebrow">SMEs GROW WITH SYSTEMS.</span>

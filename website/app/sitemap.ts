@@ -7,6 +7,7 @@ const pages: [path: string, priority: number][] = [
   ['/ai-agent-development', 0.9],
   ['/ai-lead-generation', 0.8],
   ['/smes', 0.9],
+  ['/ai-consulting-for-smes', 0.9],
   ['/enterprise', 0.8],
   ['/about', 0.6],
   ['/4ruple', 0.9],
@@ -17,7 +18,7 @@ const pages: [path: string, priority: number][] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date('2026-09-15');
+  const lastModified = new Date('2026-09-17');
   return pages.map(([path, priority]) => ({
     url: `${SITE_URL}${path}`,
     lastModified,
