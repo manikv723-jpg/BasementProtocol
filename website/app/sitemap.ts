@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { guides } from '@/lib/guides';
 import { SITE_URL } from '@/lib/seo';
 
 const pages: [path: string, priority: number][] = [
@@ -18,10 +19,10 @@ const pages: [path: string, priority: number][] = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date('2026-09-15');
-  return pages.map(([path, priority]) => ({
+  return [...pages.map(([path, priority]) => ({
     url: `${SITE_URL}${path}`,
     lastModified,
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority,
-  }));
+  })), { url: `${SITE_URL}/guides`, lastModified: new Date('2026-09-27'), changeFrequency: 'weekly', priority: 0.8 }, ...guides.map(guide => ({ url: `${SITE_URL}/guides/${guide.slug}`, lastModified: new Date(guide.date), changeFrequency: 'monthly' as const, priority: 0.7 }))];
 }

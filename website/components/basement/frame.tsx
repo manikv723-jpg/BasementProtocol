@@ -30,6 +30,7 @@ const links = [
   ['Enterprise AI', '/enterprise'],
   ['Company tools', '/#tools'],
   ['For individuals', '/#templates'],
+  ['Guides', '/guides'],
 ];
 // Footer-only: crawlable internal links to the keyword pages.
 const serviceLinks = [

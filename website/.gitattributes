@@ -1,0 +1,3 @@
+# Preserve original downloads as binary assets; never normalize PDF bytes.
+*.pdf binary
+*.webp binary

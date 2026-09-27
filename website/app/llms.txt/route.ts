@@ -25,6 +25,10 @@ Commercial results for these engagements have not been disclosed.
 - Dipstick (coming soon): a D2C intelligence platform for benchmarking brands across quick commerce, advertising, websites and social.
 - Marketing and Corporate (coming soon): AI workflows for individuals.
 
+## Guides by Manikk.ai
+- Free, readable AI build guides with original PDF downloads: https://basementprotocol.com/guides
+- SayOpen + Jev: how a voice-controlled Mac build routes commands, evaluates confidence and handles UI actions. Includes author-reported tests and limitations. A build walkthrough, not a public app download: https://basementprotocol.com/guides/sayopen-jev
+
 ## How to engage
 - Book a 30-minute meeting: https://calendly.com/team-manikai/30min
 - Consulting and build services: pricing depends on scope; there are no fixed service packages.

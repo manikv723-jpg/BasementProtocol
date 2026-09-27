@@ -5,6 +5,7 @@ import './enterprise.css';
 import './smes.css';
 import './landing.css';
 import './fouruple.css';
+import './manikk-guides.css';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/seo';
 const sans = Geist({
   variable: '--font-geist-sans',
